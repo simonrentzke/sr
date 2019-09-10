@@ -82,7 +82,7 @@ body .wrapper .header .header-content h1 {
   color: white;
   text-shadow: 1px 1px 1px black;
   filter: dropshadow(color=black, offx=1, offy=1);
-  font-size: 150px;
+  font-size: 134px;
   z-index: 0;
   margin-left: 45px;
 }
