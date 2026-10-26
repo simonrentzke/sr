@@ -1,135 +1,248 @@
-/* line 1 */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, hr, button {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: none;
+/* 45 Silver Ranch: a rustic beach cottage.
+   Sea teal, sea-glass, sand and sun, with a warm serif for the headings. */
+
+@font-face {
+  font-family: "Young Serif";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/young-serif-400.woff2") format("woff2");
 }
 
-/* line 10 */
+:root {
+  --sea: #0f5f6e;
+  --navy: #0b2d38;
+  --glass: #d9ebe7;
+  --glass-2: #c2ddd7;
+  --sand: #e8d6a6;
+  --buoy: #c2402e;
+  --sun: #f0b83a;
+  --ink: #0d2a33;
+  --paper: #fbfdfc;
+
+  --display: "Young Serif", Georgia, "Times New Roman", serif;
+  --text: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --gutter: 16px;
+  --col: 1040px;
+  --rule: 3px;
+  --nav-h: 60px;
+  --form-h: 400px; /* sized for the closed notice; raise when the form has fields */
+
+  /* Sea-glass speckle drawn in SVG noise; sea and navy stay flat */
+  --grain-glass: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.25 0 0 0 0 0.28 0 0 0 0.2 -0.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--sea) var(--glass-2);
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
 body {
-  background: #f7fafa;
-  min-width: 1024px;
-  font-family: "Swanky and Moo Moo", cursive;
-  font-size: 10pt;
-}
-/* line 16 */
-body .wrapper {
-  background: #cccccc url(../images/beige_paper.png) repeat;
-  width: 100%;
-  position: relative;
-}
-/* line 18 */
-body .wrapper .eyebrow {
-  position: fixed;
-  height: 40px;
-  width: 100%;
-}
-/* line 22 */
-body .wrapper .eyebrow div {
-  margin: 0 auto;
-  width: 920px;
-}
-/* line 25 */
-body .wrapper .eyebrow div ul {
-  margin-left: 100px;
-}
-/* line 27 */
-body .wrapper .eyebrow div ul li {
-  float: left;
-  list-style: none;
-}
-/* line 30 */
-body .wrapper .eyebrow div ul li a {
-  color: white;
-  text-decoration: none;
-  float: left;
-  font-size: 25px;
-  padding-left: 30px;
-  text-shadow: 2px 2px 1px black;
-}
-/* line 38 */
-body .wrapper .eyebrow div ul .left a:hover {
-  -webkit-transform: rotate(-10deg) scale(1.2);
-  -moz-transform: rotate(-10deg) scale(1.2);
-  -o-transform: rotate(-10deg) scale(1.2);
-}
-/* line 43 */
-body .wrapper .eyebrow div ul .right a:hover {
-  -webkit-transform: rotate(10deg) scale(1.2);
-  -moz-transform: rotate(10deg) scale(1.2);
-  -o-transform: rotate(10deg) scale(1.2);
-}
-/* line 47 */
-body .wrapper .header {
-  background: #f7fafa url("/images/keurbooms-strand.jpg") no-repeat;
-  background-size: 100%;
-  background-position: center;
-  width: 100%;
-  height: 250px;
-}
-/* line 53 */
-body .wrapper .header .header-content {
-  padding-top: 10px;
-  margin: 0 auto;
-  width: 920px;
-}
-/* line 57 */
-body .wrapper .header .header-content h1 {
-  color: white;
-  text-shadow: 1px 1px 1px black;
-  filter: dropshadow(color=black, offx=1, offy=1);
-  font-size: 134px;
-  z-index: 0;
-  margin-left: 45px;
-}
-/* line 68 */
-body .wrapper .main {
-  border-top: 1px solid #68adb1;
-  height: auto;
-}
-/* line 71 */
-body .wrapper .main .main-content {
-  margin: 0 auto;
-  width: 920px;
-}
-/* line 74 */
-body .wrapper .main .main-content section {
-  font-family: "Swanky and Moo Moo", cursive;
-  font-size: 24px;
-  padding: 50px;
-  margin-bottom: 40px;
-}
-/* line 78 */
-body .wrapper .main .main-content section .important {
-  font-weight: bold;
-  color: #677a6e;
-}
-/* line 83 */
-body .wrapper .main .main-content section .boxed {
-  width: 820px;
-  height: 330px;
-  overflow: hidden;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  -moz-box-shadow: 10px 10px 5px #888888;
-  -webkit-box-shadow: 10px 10px 5px #888888;
-  box-shadow: 10px 10px 5px #888888;
-}
-/* line 93 */
-body .wrapper .footer {
-  font-family: helvetica;
-  height: 9px;
-  font-size: 7px;
-  text-align: center;
-  padding-left: 120px;
-  background: #eeeeee;
+  margin: 0;
+  background: var(--glass);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  caret-color: var(--buoy);
+  accent-color: var(--sand);
 }
 
-/* line 101 */
-ul {
-  margin-left: 50px;
+::selection { background: var(--sun); color: var(--navy); }
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: inherit; text-decoration-thickness: 0.1em; text-underline-offset: 0.18em; }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+.panel-glass a:focus-visible, .panel-glass2 a:focus-visible, .panel-sand a:focus-visible, .hero a:focus-visible { outline-color: var(--sea); }
+
+h1, h2, h3 { margin: 0; text-wrap: balance; font-family: var(--display); font-weight: 400; }
+h2 {
+  font-size: clamp(2.5rem, 1.6rem + 4vw, 4.25rem);
+  line-height: 1.08;
+  margin-bottom: 0.45em;
 }
+h3 { font-size: 1.5rem; line-height: 1.15; margin-bottom: 0.4em; }
+p, li { text-wrap: pretty; }
+p { margin: 0 0 1em; }
+
+.container { width: min(100% - 2 * var(--gutter), var(--col)); margin-inline: auto; }
+
+.skip-link {
+  position: absolute; left: var(--gutter); top: -120px; z-index: 100;
+  background: var(--sun); color: var(--navy); padding: 10px 14px; font-weight: 700;
+}
+.skip-link:focus { top: 8px; }
+
+/* Nav: a navy rail with the enamel gate number */
+.bar {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--navy);
+  color: var(--paper);
+  border-bottom: 3px solid #071c24;
+}
+.bar-inner {
+  width: min(100% - 2 * var(--gutter), var(--col));
+  margin-inline: auto; min-height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+}
+.number-plate {
+  position: relative;
+  font-family: var(--display); font-weight: 400;
+  font-size: 1.4rem; line-height: 1;
+  color: #1b1b1b; background: var(--paper);
+  border: 3px solid #1b1b1b; border-radius: 6px;
+  padding: 5px 14px 3px;
+  text-decoration: none;
+}
+.number-plate::before, .number-plate::after {
+  content: ""; position: absolute; top: 50%; width: 4px; height: 4px; margin-top: -2px;
+  border-radius: 50%; background: #6b6b66;
+}
+.number-plate::before { left: 3px; }
+.number-plate::after { right: 3px; }
+.bar ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: flex-end; gap: 0 clamp(12px, 3vw, 30px); }
+.bar li a {
+  display: inline-block; padding: 14px 0 11px;
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; border-bottom: 3px solid transparent;
+}
+.bar li a:hover { border-bottom-color: var(--sun); }
+@media (min-width: 640px) { .bar li a { font-size: 0.95rem; } }
+@media (max-width: 360px) {
+  .bar ul { gap: 0 6px; }
+  .bar li a { font-size: 0.66rem; letter-spacing: 0.02em; }
+  .number-plate { font-size: 1.1rem; padding: 4px 8px 2px; }
+}
+@media (max-width: 480px) {
+  .bar-inner { gap: 8px; }
+  .number-plate { font-size: 1.25rem; padding: 4px 10px 2px; }
+  .bar ul { gap: 0 9px; }
+  .bar li a { font-size: 0.72rem; letter-spacing: 0.04em; }
+}
+
+/* Hero: the lagoon photograph, then the title set plainly on sea-glass */
+.hero { background: var(--glass) var(--grain-glass); }
+.hero-photo {
+  width: 100%;
+  height: clamp(280px, 46vh, 560px);
+  object-fit: cover; object-position: center 45%;
+}
+.hero-text { max-width: 46rem; padding: clamp(32px, 5vw, 56px) 0 clamp(48px, 7vw, 80px); }
+.hero h1 {
+  font-size: clamp(2.75rem, 1.5rem + 5.4vw, 4.75rem);
+  line-height: 1.05;
+  color: var(--sea);
+}
+.billing { font-weight: 600; font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem); line-height: 1.45; margin: 0.7em 0 1.3em; }
+
+/* The closed notice: one plain buoy-red bar */
+.status {
+  margin: 0 0 1.25em;
+  padding: 12px 18px;
+  background: var(--buoy);
+  color: var(--paper);
+}
+.status strong { font-family: var(--display); font-weight: 400; font-size: clamp(1.2rem, 1rem + 0.9vw, 1.5rem); line-height: 1.25; }
+
+/* Buttons */
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.actions .btn { flex: 1 1 140px; text-align: center; }
+@media (min-width: 640px) { .actions .btn { flex: 0 0 auto; } }
+@media (max-width: 480px) { .actions .btn { padding-inline: 10px; } }
+.btn {
+  display: inline-block; min-height: 48px; padding: 12px 22px 11px;
+  border: 3px solid currentColor; border-radius: 3px;
+  background: transparent; color: inherit;
+  font-weight: 700; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.25;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.btn:hover { background: var(--navy); color: var(--paper); border-color: var(--navy); }
+.btn-solid { background: var(--sea); color: var(--paper); border-color: var(--sea); }
+.btn-solid:hover { background: var(--navy); color: var(--paper); border-color: var(--navy); }
+
+/* Panels: one material per section, one left edge */
+.panel { padding: clamp(56px, 9vw, 104px) 0; }
+.panel-glass { background: var(--glass) var(--grain-glass); color: var(--ink); }
+.panel-glass2 { background: var(--glass-2) var(--grain-glass); color: var(--ink); }
+.panel-sand { background: var(--sand) var(--grain-glass); color: var(--ink); }
+.panel-sea { background: var(--sea); color: var(--paper); }
+.panel-navy { background: var(--navy); color: var(--paper); }
+.panel-glass h2, .panel-glass2 h2, .panel-sand h2 { color: var(--sea); }
+.panel-sea h2, .panel-navy h2 { color: var(--paper); }
+.panel-glass a, .panel-glass2 a, .panel-sand a { color: #0b4a57; }
+.panel-glass .btn, .panel-glass2 .btn, .panel-sand .btn { color: var(--navy); }
+.panel-glass .btn:hover, .panel-glass2 .btn:hover, .panel-sand .btn:hover { background: var(--navy); color: var(--paper); border-color: var(--navy); }
+#cottage { padding-top: clamp(24px, 4vw, 48px); }
+
+.prose { max-width: 38rem; }
+.prose p:last-child { margin-bottom: 0; }
+
+/* Cottage intro and painted fact list */
+.cottage-intro { display: grid; gap: 32px; margin-bottom: clamp(32px, 5vw, 56px); align-items: start; }
+@media (min-width: 860px) { .cottage-intro { grid-template-columns: 1fr 1fr; gap: 56px; } }
+.billing-stack {
+  list-style: none; margin: 0; padding: 0;
+  font-family: var(--display); font-weight: 400; line-height: 1.15;
+  font-size: clamp(1.6rem, 1.1rem + 2.2vw, 2.4rem);
+  color: var(--sea);
+}
+.billing-stack li { padding: 0.18em 0 0.12em; border-top: var(--rule) solid var(--sea); }
+.billing-stack li:last-child { border-bottom: var(--rule) solid var(--sea); }
+
+/* Photographs hang in plain frames */
+.plate { margin: 0; }
+.plate img { width: 100%; }
+.plate figcaption { margin-top: 10px; font-size: 0.95rem; line-height: 1.4; }
+.plate + .amenities, .amenities + .plate-row, .prose + .plate-row, .columns + .plate-row, .plate-row + .plate-row, .plate-row + .more-links {
+  margin-top: clamp(28px, 4vw, 48px);
+}
+.plate + .amenities { margin-top: clamp(32px, 5vw, 56px); }
+.plate-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 24px; }
+/* Rows share two equal columns and one crop ratio, so gutters line up down the page */
+.plate-row .plate img { aspect-ratio: 2.4 / 1; object-fit: cover; height: auto; }
+/* Photographs hang in white-washed frames */
+.plate img { border: 6px solid #fff; outline: 1px solid rgba(11, 45, 56, 0.22); }
+
+/* Amenities: three ruled lists */
+.amenities { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px 32px; }
+.amenities > div { border-top: var(--rule) solid var(--sea); padding-top: 14px; }
+.amenities h3 { color: var(--sea); }
+.amenities ul { list-style: none; margin: 0; padding: 0; }
+.amenities li { padding: 3px 0; }
+
+/* Around Plett */
+.columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; }
+.columns > div { border-top: var(--rule) solid var(--sun); padding-top: 14px; }
+.columns h3 { color: var(--sun); }
+.columns p:last-child { margin-bottom: 0; }
+.columns a, .more-links a { color: var(--paper); }
+.more-links { margin-bottom: 0; }
+
+/* Directions */
+.directions { display: grid; gap: 32px; align-items: start; margin-bottom: clamp(28px, 4vw, 48px); }
+@media (min-width: 860px) { .directions { grid-template-columns: 1fr 1fr; gap: 56px; } }
+.steps { margin: 0 0 1.5em; padding-left: 1.4em; }
+.steps li { margin-bottom: 0.8em; padding-left: 0.2em; }
+.steps li::marker { font-family: var(--display); font-size: 1.2em; color: var(--sea); }
+.map iframe { display: block; width: 100%; aspect-ratio: 4 / 3; border: 6px solid #fff; outline: 1px solid rgba(11, 45, 56, 0.22); background: var(--paper); }
+
+/* Bookings */
+.form-embed { border: 6px solid var(--glass); max-width: 760px; background: var(--paper); }
+.form-embed iframe { display: block; width: 100%; height: var(--form-h); border: 0; }
+#bookings .status { max-width: 760px; }
+
+@media (max-width: 480px) { .form-embed iframe { height: 470px; } }
+
+/* Footer */
+.foot { background: #071c24; color: var(--glass-2); border-top: var(--rule) solid var(--sun); padding: 32px 0; font-size: 0.95rem; }
+.foot p { margin: 0 0 0.4em; }
+.foot a { color: var(--sun); }
+
+[id] { scroll-margin-top: calc(var(--nav-h) + 8px); }
