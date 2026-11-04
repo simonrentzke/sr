@@ -234,7 +234,7 @@ p { margin: 0 0 1em; }
 .map iframe { display: block; width: 100%; aspect-ratio: 4 / 3; border: 6px solid #fff; outline: 1px solid rgba(11, 45, 56, 0.22); background: var(--paper); }
 
 /* Bookings */
-.form-embed { border: 6px solid var(--glass); max-width: 760px; background: var(--paper); }
+.form-embed { border: 6px solid var(--glass); background: var(--paper); }
 .form-embed iframe { display: block; width: 100%; height: var(--form-h); border: 0; }
 #bookings .status { max-width: 760px; }
 
